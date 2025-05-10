@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
 
 //fontend
 Route::get('/', [HomeController::class, 'index']);
@@ -78,3 +79,11 @@ Route::post('/update_product/{product_id}', [ProductController::class, 'update_p
 
 //cart
 Route::post('/save_cart',[CartController::class,'save_cart']);
+
+
+
+// Route GET để hiển thị form
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
+
+// Route POST để xử lý form gửi đi
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

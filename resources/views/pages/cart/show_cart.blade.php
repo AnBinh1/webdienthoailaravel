@@ -13,7 +13,7 @@
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="image" style="width:50;heigt:50">Ảnh</td>
+                        <td class="image" style="width:50; height:50">Ảnh</td>
                         <td class="name">Tên sp</td>
                         <td class="price">Giá</td>
                         <td class="quantity">Số Lượng</td>
