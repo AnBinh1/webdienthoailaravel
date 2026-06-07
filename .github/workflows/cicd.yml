@@ -61,9 +61,6 @@ jobs:
       - name: Copy .env.testing
         run: cp .env.testing .env
 
-      - name: Set DB password
-        run: sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
-
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
