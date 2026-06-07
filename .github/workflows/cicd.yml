@@ -43,9 +43,10 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: secret
           MYSQL_DATABASE: webdienthoai_testing
+          MYSQL_ROOT_HOST: '%'
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -psecret" --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
       - name: Checkout code
@@ -60,15 +61,17 @@ jobs:
       - name: Copy .env.testing
         run: cp .env.testing .env
 
-      - name: Update DB password in .env
-        run: |
-          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
+      - name: Set DB password
+        run: sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
 
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
       - name: Generate app key
         run: php artisan key:generate
+
+      - name: Wait for MySQL
+        run: sleep 10
 
       - name: Run migrations
         run: php artisan migrate --env=testing --force
