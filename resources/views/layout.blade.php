@@ -212,7 +212,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Danh mục sản phẩm DDAAY NAFY</h2>
+						<h2>Danh mục sản phẩm</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							@foreach ($category as $key => $category_product )
 							<div class="panel panel-default">
